@@ -1,0 +1,59 @@
+*,
+*:before,
+*:after,
+*:first-letter,
+p:first-line,
+div:first-line,
+blockquote:first-line,
+li:first-line {
+	background: transparent !important;
+	color: #000 !important;
+	box-shadow: none !important;
+	text-shadow: none !important;
+}
+
+img {
+        display: block;
+	page-break-before: auto; /* 'always,' 'avoid,' 'left,' 'inherit,' or 'right' */
+	page-break-after: auto; /* 'always,' 'avoid,' 'left,' 'inherit,' or 'right' */
+	page-break-inside: avoid; /* or 'auto' */
+}
+
+h2 {
+	page-break-before: always;
+}
+
+div#header, 
+div#right, 
+div#comments, 
+aside#secondary,
+div.social-likes, 
+div.post-ratings, 
+div.clearfix {
+	display:none;
+}
+
+div#container div#left {
+	padding: 0;
+}
+
+.post {
+	border: none;
+}
+
+.wp_syntax {
+	page-break-before: avoid;
+	page-break-after: auto;
+	page-break-inside: auto;
+	display: block;
+}
+
+div#center {
+	min-width: initial; 
+	max-width: initial;
+}
+
+.post .meta {
+	display:none;
+}
+

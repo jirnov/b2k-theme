@@ -1,0 +1,23 @@
+<?php get_header(); ?>
+<?php if (!is_404()) { return; } ?>
+
+<div id="primary" class="content-area <?php b2k_primary_grid(); ?>">
+	<main id="main" class="site-main">
+
+		<article <?php post_class("hentry"); ?>>
+		        <header class="entry-header">
+		                <h1>Страница не найдена</h1>
+		        </header> <!-- .entry-header -->
+
+		        <div class="entry-content">
+				<p>Извините, но такой страницы никогда не существовавала или она была удалена.</p>
+				<p>Воспользуйтесь строкой поиска или облаком меток в правой панели. Если вы считаете, что это какая-то ошибка, напишите о проблеме на <a href="mailto:evgeny@blog2k.ru">почту</a>.</p>
+				<p style="text-align:center"><a href="https://blog2k.ru">вернуться на главную страницу блога</a></p>
+		        </div> <!-- .entry-content -->
+		</article> <!-- #post-## -->
+	</main> <!-- #main -->
+</div> <!-- #primary -->
+
+<?php get_sidebar(); ?>
+
+<?php get_footer();

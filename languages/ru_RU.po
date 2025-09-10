@@ -1,0 +1,45 @@
+# Translation of WordPress - 4.7.x - Administration - Network Admin in Russian
+# This file is distributed under the same license as the WordPress - 4.7.x - Administration - Network Admin package.
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru\n"
+"Project-Id-Version: b2k\n"
+"PO-Revision-Date: 2017-04-17 10:36+0300\n"
+"Last-Translator: Evgenii Zhirnov <evgeny@blog2k.ru>\n"
+"Language-Team: Russian\n"
+"MIME-Version: 1.0\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+msgid "Input search string here and press Enter"
+msgstr "Введите строку для поиска и нажмите Enter"
+
+msgid "Header Menu"
+msgstr "Заголовок меню"
+
+msgid "Site search"
+msgstr "Поиск по сайту"
+
+msgid "reply"
+msgstr "ответить"
+
+msgid "wrote"
+msgstr "написал(а)"
+
+msgid "Your comment"
+msgstr "Ваш комментарий"
+
+msgid "Name (required)"
+msgstr "Имя (обязательно)"
+
+msgid "Email (required)"
+msgstr "Е-мейл (обязательно)"
+
+msgid "Homepage (not required)"
+msgstr "Домашняя страница (необязательно)"
+
+msgid "There are no comments yet, you may be the first!"
+msgstr "Комментариев нет. Будьте первым!"
+

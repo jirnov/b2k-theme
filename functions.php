@@ -79,7 +79,7 @@ function b2k_tags() {
 }
 
 function b2k_get_counter($post_id) {
-  $counter = get_post_meta($post_id, '_post_counter', true);
+  $counter = get_post_meta($post_id, 'b2k_post_counter', true);
   if ($counter) {
     return intval($counter);
   }

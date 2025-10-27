@@ -9,6 +9,7 @@ function b2k_setup() {
 
   load_theme_textdomain('b2k', get_template_directory() . '/languages');
 
+  global $content_width;
   if (!isset($content_width)) {
     $content_width = 1280;
   }
@@ -25,6 +26,8 @@ function b2k_styles() {
   wp_dequeue_style('wp-block-library-theme');
   wp_dequeue_style('global-styles');
 
+  wp_register_style('b2k-style', get_stylesheet_uri(), array(), $ver);
+
   wp_register_style(
     'printer',
     get_stylesheet_directory_uri() . '/css/printer.css',
@@ -39,7 +42,7 @@ function b2k_styles() {
     $ver,
     'all');
 
-  wp_enqueue_style('b2k-style', get_stylesheet_uri(), array(), $ver);
+  wp_enqueue_style('b2k-style');
   wp_enqueue_style('printer');
   wp_enqueue_style('reflex');
 
@@ -64,7 +67,7 @@ function b2k_scripts() {
     wp_enqueue_script('comment-reply');
   }
 }
-add_action('wp_enqeueue_scripts', 'b2k_scripts');
+add_action('wp_enqueue_scripts', 'b2k_scripts');
 
 
 function b2k_tags() {
@@ -72,11 +75,16 @@ function b2k_tags() {
   $tags = array();
   if ($posttags) {
     foreach ($posttags as $tag) {
-      array_push($tags, '<a href="' . get_tag_link($tag->term_id) . '">#' . mb_strtolower($tag->name) . '</a>');
+      $tags[] = sprintf(
+        '<a href="%s">#%s</a>',
+        esc_url(get_tag_link($tag->term_id)),
+        esc_html(mb_strtolower($tag->name))
+      );
     }
   }
-  echo '<span>'. implode($tags) . '</span>';
+  echo '<span>'. implode('', $tags) . '</span>';
 }
+
 
 function b2k_get_counter($post_id) {
   $counter = get_post_meta($post_id, 'b2k_post_counter', true);
@@ -89,15 +97,17 @@ function b2k_get_counter($post_id) {
 function b2k_print_view_counter() {
   $counter = b2k_get_counter(get_the_ID());
 
+  $formatted = $counter; // значение по умолчанию
+
   if ($counter >= 1000000) {
-    printf('<span class="view" title="%s">%.1fM</span>', $counter, $counter / 1000000.0);
+    $formatted = sprintf('%.1fM', $counter / 1000000.0);
+  } elseif ($counter >= 1000) {
+    $formatted = sprintf('%.1fK', $counter / 1000.0);
   }
-  else if ($counter >= 1000) {
-    printf('<span class="view" title="%s">%.1fK</span>', $counter, $counter / 1000.0);
-  }
-  else {
-    printf('<span class="view">%s</span>', $counter);
-  }
+
+  printf('<span class="view" title="%s">%s</span>',
+         esc_attr(number_format($counter, 0, ',', ' ')),
+         esc_html($formatted));
 }
 
 function b2k_widgets_init() {
@@ -144,8 +154,6 @@ add_action('init', 'b2k_register_my_menus');
 
 
 function b2k_comment_callback($comment, $args, $depth) {
-  $GLOBALS['comment'] = $comment;
-
 ?>
     <li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
             <article id="comment-<?php comment_ID(); ?>" class="comment">

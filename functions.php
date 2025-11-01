@@ -106,8 +106,8 @@ function b2k_print_view_counter() {
   }
 
   printf('<span class="view" title="%s">%s</span>',
-         esc_attr(number_format($counter, 0, ',', ' ')),
-         esc_html($formatted));
+    esc_attr(number_format($counter, 0, ',', ' ')),
+    esc_html($formatted));
 }
 
 function b2k_widgets_init() {

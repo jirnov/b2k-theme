@@ -185,6 +185,27 @@ function b2k_comment_callback($comment, $args, $depth) {
 <?php
 }
 
+function b2k_the_content($post) {
+  the_content();
+  return;
+
+  if (is_singular()) {
+    the_content();
+    return;
+  }
+
+  $content = apply_filters('the_content', $post->post_content);
+  $parts = get_extended($content);
+  echo $parts['main'];
+  if (!empty($parts['extended'])) {
+    echo apply_filters('the_content_more_link', '<a href="' . get_permalink() . '"><span>Развернуть</span><span id="Loading">...</span></a>');
+  }
+  echo '<div style="display:none">';
+//  echo apply_filters('the_content', $parts['extended']);
+  echo '</div>';
+
+}
+
 
 function b2k_pre_get_posts($query) {
   if (is_search()) {

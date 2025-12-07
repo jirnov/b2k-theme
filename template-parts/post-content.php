@@ -24,7 +24,7 @@
 
   <!-- begin entry-content -->
   <div class="entry-content">
-      <?php the_content(); ?>
+      <?php b2k_the_content($post); ?>
       <?php wp_link_pages(); ?>
   </div> 
   <!-- end entry-content -->
